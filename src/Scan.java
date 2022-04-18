@@ -8,13 +8,16 @@ public class Scan extends Algorithm {
 	private String direction;
 	private ArrayList<Integer> left=new ArrayList<Integer>();
 	private ArrayList<Integer> right=new ArrayList<Integer>();
+	
 	Scan(ArrayList<Integer> queue,int diskSize,int head,String direction)
 	{
+		System.out.println("-----------"+direction+"---------");
 		this.queue=queue;
 		this.diskSize=diskSize;
 		this.head=head;
 		this.direction=direction;
 	}
+	
 	@Override
 	public void excuteAlgorithm()
 	{
@@ -41,6 +44,7 @@ public class Scan extends Algorithm {
 		Collections.sort(left);
 		traverseQueue();
 	}
+	
 	public void traverseQueue()
 	{
 		ArrayList<Integer> seekSequence=new ArrayList<Integer>();
@@ -53,7 +57,6 @@ public class Scan extends Algorithm {
 				for (int i = 0; i < left.size(); i++)
 				{
 					currTrack=left.get(i);
-					System.out.println(left.get(i));
 					seekSequence.add(currTrack);
 					distance = Math.abs(currTrack - head);
 					seekCount += distance;
@@ -79,6 +82,7 @@ public class Scan extends Algorithm {
 		}
 		print(seekCount,seekSequence);
 	}
+	
 	public void print( int seekCount, ArrayList<Integer> seekSequence)
 	{
 		System.out.println("Total number of seek operations = " + seekCount );
