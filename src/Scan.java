@@ -11,7 +11,6 @@ public class Scan extends Algorithm {
 	
 	Scan(ArrayList<Integer> queue,int diskSize,int head,String direction)
 	{
-		System.out.println("-----------"+direction+"---------");
 		this.queue=queue;
 		this.diskSize=diskSize;
 		this.head=head;
