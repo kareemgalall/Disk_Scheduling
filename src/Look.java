@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class CSCAN extends Algorithm {
-
+public class Look extends Algorithm {
+	
 	private String direction;
 	private ArrayList<Integer> left=new ArrayList<Integer>();
 	private ArrayList<Integer> right=new ArrayList<Integer>();
 	
-	CSCAN(ArrayList<Integer> queue,int diskSize,int head,String direction)
+	Look(ArrayList<Integer> queue,int diskSize,int head,String direction)
 	{
 		this.queue=queue;
 		this.diskSize=diskSize;
@@ -15,11 +15,10 @@ public class CSCAN extends Algorithm {
 		this.direction=direction;
 	}
 	
+	@Override
 	public void excuteAlgorithm()
 	{
-		left.add(0);
-        right.add(diskSize - 1);
-        
+		
 		for(int i=0;i<queue.size();i++) {
 			if(queue.get(i)<head) {
 				left.add(queue.get(i));
@@ -33,31 +32,42 @@ public class CSCAN extends Algorithm {
 		Collections.sort(left);
 		traverseQueue();
 	}
-		
+	
 	public void traverseQueue()
 	{
 		ArrayList<Integer> seekSequence=new ArrayList<Integer>();
 		int distance=0,currTrack,seekCount = 0;
-		
-		for (int i = 0; i < right.size(); i++) {
-			currTrack=right.get(i);
-			seekSequence.add(currTrack);
+		int cnt=0;
+		while(cnt<2)
+		{
+			if(this.direction.equals("left"))
+			{
+				for (int i = left.size()-1; i >=0 ; i--)
+				{
+					currTrack=left.get(i);
+					seekSequence.add(currTrack);
+					distance = Math.abs(currTrack - head);
+					seekCount += distance;
+                    head = currTrack;
+				}
+				
+				this.direction = "right";
+			}
+			else if(this.direction.equals("right"))
+			{
+				for (int i = 0; i < right.size(); i++)
+				{
+					currTrack=right.get(i);
+					seekSequence.add(currTrack);
+					distance = Math.abs(currTrack - head);
+					seekCount += distance;
+                    head = currTrack;
+				}
+				
+				this.direction="left";
+			}
+		cnt++;
 		}
-		for (int i = 0; i < left.size(); i++) {
-			currTrack=left.get(i);
-			seekSequence.add(currTrack);
-		}
-		
-		if(direction.equals("left")) {
-			Collections.reverse(seekSequence);
-		}
-		
-		for(int i : seekSequence) {
-			distance = Math.abs(i - head);
-			head = i ;
-			seekCount += distance;
-		}
-			
 		print(seekCount,seekSequence);
 	}
 	

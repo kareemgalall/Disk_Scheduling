@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class CSCAN extends Algorithm {
+public class CLook extends Algorithm {
 
 	private String direction;
 	private ArrayList<Integer> left=new ArrayList<Integer>();
 	private ArrayList<Integer> right=new ArrayList<Integer>();
 	
-	CSCAN(ArrayList<Integer> queue,int diskSize,int head,String direction)
+	CLook(ArrayList<Integer> queue,int diskSize,int head,String direction)
 	{
 		this.queue=queue;
 		this.diskSize=diskSize;
@@ -17,9 +17,7 @@ public class CSCAN extends Algorithm {
 	
 	public void excuteAlgorithm()
 	{
-		left.add(0);
-        right.add(diskSize - 1);
-        
+		
 		for(int i=0;i<queue.size();i++) {
 			if(queue.get(i)<head) {
 				left.add(queue.get(i));
@@ -33,7 +31,7 @@ public class CSCAN extends Algorithm {
 		Collections.sort(left);
 		traverseQueue();
 	}
-		
+	
 	public void traverseQueue()
 	{
 		ArrayList<Integer> seekSequence=new ArrayList<Integer>();
@@ -57,7 +55,7 @@ public class CSCAN extends Algorithm {
 			head = i ;
 			seekCount += distance;
 		}
-			
+		
 		print(seekCount,seekSequence);
 	}
 	
