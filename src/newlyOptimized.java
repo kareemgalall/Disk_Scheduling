@@ -12,14 +12,14 @@ public class newlyOptimized extends Algorithm{
 	
 	@Override
 	public void excuteAlgorithm() {
+		queue.add(0);
+		Collections.sort(queue);
 		traverseQueue();
 	}
 
 	@Override
 	public void traverseQueue() {
 		ArrayList<Integer> seekSequence=new ArrayList<Integer>();
-		queue.add(0);
-		Collections.sort(queue);
 		int distance=0,currTrack,seekCount = 0;
 		for(int i = 0 ; i < queue.size() ; i++) {
 			currTrack = queue.get(i) ;

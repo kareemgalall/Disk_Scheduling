@@ -22,7 +22,6 @@ public class FCFS extends Algorithm{
 	public void traverseQueue() {
 		ArrayList<Integer> seekSequence=new ArrayList<Integer>();
 		int distance=0,currTrack,seekCount = 0;
-		//Collections.sort(queue);
 		for(int i = 0 ; i < queue.size() ; i++) {
 			currTrack = queue.get(i) ;
 			seekSequence.add(currTrack);
