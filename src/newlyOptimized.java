@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FCFS extends Algorithm{
+public class newlyOptimized extends Algorithm{
 	
-	FCFS(ArrayList<Integer> queue,int diskSize,int head)
+	newlyOptimized(ArrayList<Integer> queue,int diskSize,int head)
 	{
 		this.queue=queue;
 		this.diskSize=diskSize;
@@ -18,8 +18,9 @@ public class FCFS extends Algorithm{
 	@Override
 	public void traverseQueue() {
 		ArrayList<Integer> seekSequence=new ArrayList<Integer>();
+		queue.add(0);
+		Collections.sort(queue);
 		int distance=0,currTrack,seekCount = 0;
-		//Collections.sort(queue);
 		for(int i = 0 ; i < queue.size() ; i++) {
 			currTrack = queue.get(i) ;
 			seekSequence.add(currTrack);

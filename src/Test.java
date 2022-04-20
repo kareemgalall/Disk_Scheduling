@@ -38,5 +38,7 @@ public class Test {
 		q.setAlgorithm(new Look(arr,diskSize,head,direction));
 		System.out.println("--------CLook Algorithm----------");
 		q.setAlgorithm(new CLook(arr,diskSize,head,direction));
+		System.out.println("--------Newly Optimized Algorithm----------");
+		q.setAlgorithm(new newlyOptimized(arr,diskSize,0));
 	}
 }
