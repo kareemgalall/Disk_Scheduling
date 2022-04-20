@@ -55,7 +55,7 @@ public class SSTF extends Algorithm{
 			queue.add(left.get(0));
 			left.remove(0);
 		}
-		
+		head = initialHead;
 		traverseQueue();
 	}
 
@@ -71,8 +71,8 @@ public class SSTF extends Algorithm{
 		}
 		
 		for(int i : seekSequence) {
-			distance = Math.abs(i - initialHead);
-			initialHead = i ;
+			distance = Math.abs(i - head);
+			head = i ;
 			seekCount += distance;
 		}
 		
@@ -83,7 +83,7 @@ public class SSTF extends Algorithm{
 	public void print(int seekCount, ArrayList<Integer> seekSequence) {
 		
 		System.out.println("Total number of seek operations = " + seekCount );
-		System.out.print("Seek Sequence is: ");
+		System.out.print("Seek Sequence is: " + this.initialHead + " -> ");
 
         for (int i = 0; i < seekSequence.size(); i++)
         {

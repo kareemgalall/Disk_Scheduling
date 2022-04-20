@@ -3,6 +3,7 @@ import java.util.Collections;
 
 public class Scan extends Algorithm {
 	
+	private int initialHead ;
 	private String direction;
 	private ArrayList<Integer> left=new ArrayList<Integer>();
 	private ArrayList<Integer> right=new ArrayList<Integer>();
@@ -13,6 +14,7 @@ public class Scan extends Algorithm {
 		this.diskSize=diskSize;
 		this.head=head;
 		this.direction=direction;
+		this.initialHead=head;
 	}
 	
 	@Override
@@ -81,8 +83,8 @@ public class Scan extends Algorithm {
 	public void print( int seekCount, ArrayList<Integer> seekSequence)
 	{
 		System.out.println("Total number of seek operations = " + seekCount );
-		System.out.print("Seek Sequence is: ");
-
+		System.out.print("Seek Sequence is: " + this.initialHead + " -> ");
+		
         for (int i = 0; i < seekSequence.size(); i++)
         {
             System.out.print(seekSequence.get(i));

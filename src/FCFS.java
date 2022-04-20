@@ -3,11 +3,14 @@ import java.util.Collections;
 
 public class FCFS extends Algorithm{
 	
+	private int initialHead ;
+	
 	FCFS(ArrayList<Integer> queue,int diskSize,int head)
 	{
 		this.queue=queue;
 		this.diskSize=diskSize;
 		this.head=head;
+		this.initialHead=head;
 	}
 	
 	@Override
@@ -34,7 +37,7 @@ public class FCFS extends Algorithm{
 	public void print(int seekCount, ArrayList<Integer> seekSequence) {
 		
 		System.out.println("Total number of seek operations = " + seekCount );
-		System.out.print("Seek Sequence is: ");
+		System.out.print("Seek Sequence is: " + this.initialHead + " -> ");
 
         for (int i = 0; i < seekSequence.size(); i++) {
             System.out.print(seekSequence.get(i));
