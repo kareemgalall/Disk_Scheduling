@@ -20,21 +20,20 @@ public class newlyOptimized extends Algorithm{
 	@Override
 	public void traverseQueue() {
 		ArrayList<Integer> seekSequence=new ArrayList<Integer>();
-		int distance=0,currTrack,seekCount = 0;
+		int distance=0,currTrack;
 		for(int i = 0 ; i < queue.size() ; i++) {
 			currTrack = queue.get(i) ;
 			seekSequence.add(currTrack);
-			distance = Math.abs(currTrack - head) ;
-			seekCount += distance ;
+			distance = currTrack - head ;
 			head = currTrack ;
 		}
-		print(seekCount,seekSequence);
+		print(queue.get(queue.size()-1),seekSequence);
 	}
 	
 	@Override
 	public void print(int seekCount, ArrayList<Integer> seekSequence) {
 		
-		System.out.println("Total number of seek operations = " + seekCount );
+		System.out.println("Total number of seek operations = " + (seekCount));
 		System.out.print("Seek Sequence is: ");
 
         for (int i = 0; i < seekSequence.size(); i++) {
